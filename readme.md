@@ -1,3 +1,6 @@
+A simple Django-based quiz application where users can register and login to attempt questions based on their choice of subjects.
+
+
 ## Running the Project Locally
 
 1. Clone/Download the repository.
