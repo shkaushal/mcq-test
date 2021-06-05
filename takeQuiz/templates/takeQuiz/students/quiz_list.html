@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% include 'takeQuiz/students/header.html' with active='new' %}
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Quiz</th>
+          <th>Subject</th>
+          <th>Total Questions</th>
+          <th>Date Created</th>
+          <th>Expiration Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for quiz in quizzes %}
+          {% now "Y-m-d" as todays_date %}
+          {% if todays_date < quiz.expiration_date|date:"Y-m-d" %}
+            <tr>
+              <td class="align-middle">{{ quiz.name }}</td>
+              <td class="align-middle">{{ quiz.subject.name }}</td>
+              <td class="align-middle">{{ quiz.questions.count }}</td>
+              <td class="align-middle">{{ quiz.date_created }}</td>
+              <td class="align-middle">{{ quiz.expiration_date }}</td>
+              <td class="text-right">
+                <!-- {% if quiz in taken_quizzes %}
+                  <a href="{% url 'students:confirm_quiz' quiz.pk %}" class="btn btn-dark">Resume Test</a>
+                {% else %} -->
+                <a href="{% url 'students:confirm_quiz' quiz.pk %}" class="btn btn-dark">Start</a>
+                <!-- {% endif %} -->
+              </td>
+            </tr>
+            {% endif %}
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center" colspan="4">No quiz available right now.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

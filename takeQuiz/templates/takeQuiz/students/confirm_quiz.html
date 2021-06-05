@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; background-color: beige;">
+    <h2>You are about to start a test.</h2>
+    <h2>Please click the START button to start the test.</h2>
+    <a href="{% url 'students:take_quiz' quiz.pk %}" class="btn btn-dark">Start</a>
+</div>
+{% endblock %}

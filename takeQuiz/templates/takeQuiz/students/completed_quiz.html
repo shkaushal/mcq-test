@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; background-color: beige;">
+    <h2>Thank you for taking the test.</h2>
+    <h2>You have scored {{ correct_answers }} marks out of {{ total_questions }} in {{quiz.name}} Quiz</h2>
+    <a href="{% url 'students:quiz_list' %}" class="btn btn-dark">Return to homepage</a>
+</div>
+{% endblock %}

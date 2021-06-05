@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2><strong>Welcome to MCQ Test</strong></h2>
+  <p style="font-family: 'Times New Roman', Times, serif; font-size: 140%;">
+    If you are new here, go ahead and  <a href="{% url 'signup' %}">sign up</a>.<br>
+    If you already have an account, <a href="{% url 'login' %}">log in</a> and test your knowledge.<br>
+  </p>
+  <br>
+{% endblock %}

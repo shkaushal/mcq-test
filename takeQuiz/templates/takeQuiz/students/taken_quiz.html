@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% include 'takeQuiz/students/header.html' with active='quiztaken' %}
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Quiz</th>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Completed On</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for taken_quiz in taken_quizzes %}
+          <tr>
+            <td>{{ taken_quiz.quiz.name }}</td>
+            <td>{{ taken_quiz.quiz.subject.name }}</td>
+            <td>{{ taken_quiz.correct_answer }}/{{ taken_quiz.total_question }}</td>
+            <td>{{ taken_quiz.date }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center" colspan="3">You haven't completed any quiz yet.<br>Go, Get started!</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

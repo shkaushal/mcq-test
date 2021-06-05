@@ -1,0 +1,7 @@
+<h2 style="text-align: center;">Quizzes</h2>
+<p class="text-muted">
+    Subjects:{% for subject in user.student.subjects.all %} {{ subject.get_html_badge }}{% endfor %}
+    <a href="{% url 'students:student_subjects' %}"><small><b>(Change subjects)</b></small></a>
+</p>
+<a class="nav-link{% if active == 'new' %} active{% endif %}" href="{% url 'students:quiz_list' %}"></a>
+<a class="nav-link{% if active == 'quiztaken' %} active{% endif %}" href="{% url 'students:taken_quiz' %}"></a>
